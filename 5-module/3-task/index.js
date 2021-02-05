@@ -8,29 +8,33 @@ function initCarousel() {
   let prevBtn = document.querySelector('.carousel__arrow_left');
   let container = document.querySelector('.carousel__inner');
 
+  prevBtn.style.display = 'none';
+
   function next() {
-    if(activeSlide < slideList.length) {
+    if (activeSlide < slideList.length) {
       activeSlide += 1;
       moveSlide(activeSlide);
     }
 
     if (activeSlide === slideList.length - 1) {
-      nextBtn.style.display = 'none';
-      prevBtn.style.display = 'block';
+      hideNextBtn();
+    } else {
+      showBothButtons();
     }
 
     return false;
   }
 
   function prev() {
-    if(activeSlide > 0) {
+    if (activeSlide > 0) {
       activeSlide -= 1;
       moveSlide(activeSlide);
     }
 
     if (activeSlide === 0) {
-      prevBtn.style.display = 'none';
-      nextBtn.style.display = 'block';
+      hidePrevBtn();
+    } else {
+      showBothButtons();
     }
 
     return false;
@@ -39,6 +43,19 @@ function initCarousel() {
   function moveSlide(slide) {
     let sliderPosition = -(slide * slideWidth) + 'px';
     container.style.transform = `translateX(${sliderPosition})`;
+  }
+
+  function showBothButtons() {
+    nextBtn.style.display = '';
+    prevBtn.style.display = '';
+  }
+
+  function hidePrevBtn() {
+    prevBtn.style.display = 'none';
+  }
+
+  function hideNextBtn() {
+    nextBtn.style.display = 'none';
   }
 
   nextBtn.addEventListener('click', next);
