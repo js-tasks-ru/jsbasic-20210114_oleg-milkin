@@ -20,24 +20,18 @@ export default class ProductCard {
 
     this.elem.innerHTML = template;
 
-    // this.elem.addEventListener('product-add', function(e) {
-    //   console.info("Event is: ", e);
-    //   console.info("Custom data is: ", e.detail);
-    // })
-
     this.elem.addEventListener('click', (e) => {
       if (e.target.tagName === 'IMG' && e.target.closest('.card__button')) {
 
+        let myEvent = new CustomEvent("product-add", {
+          detail: {
+            id: product.id,
+          },
+          bubbles: true
+        });
 
-        // let myEvent = new CustomEvent("product-add", {
-        //   detail: {
-        //     id: product.id,
-        //   },
-        //   bubbles: true
-        // });
-
-        // this.elem.dispatchEvent(myEvent);
+        this.elem.dispatchEvent(myEvent);
       }
-    })
+    });
   }
 }
