@@ -10,7 +10,7 @@ export default class Carousel {
 
     let slidesTemplate = '';
 
-    slides.forEach((item) => {
+    slides.forEach((item, index) => {
 
       let template = `
         <div class="carousel__slide" data-id="${item.id}">
@@ -26,6 +26,21 @@ export default class Carousel {
       `;
 
       slidesTemplate += template;
+
+      this.elem.addEventListener('click', (e) => {
+
+        if (e.target.closest('.carousel__button')) {
+
+          console.log(slides[index].id);
+
+          let myEvent = new CustomEvent("product-add", {
+            detail: slides[index].id,
+            bubbles: true
+          });
+
+          this.elem.dispatchEvent(myEvent);
+        }
+      });
     });
 
     this.elem.innerHTML = `
