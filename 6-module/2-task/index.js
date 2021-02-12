@@ -21,17 +21,15 @@ export default class ProductCard {
     this.elem.innerHTML = template;
 
     this.elem.addEventListener('click', (e) => {
-      if (e.target.tagName === 'IMG' && e.target.closest('.card__button')) {
+      if (e.target.closest('.card__button')) {
 
         let myEvent = new CustomEvent("product-add", {
-          detail: {
-            id: product.id,
-          },
+          detail: product.id,
           bubbles: true
         });
 
         this.elem.dispatchEvent(myEvent);
       }
-    })
+    });
   }
 }
