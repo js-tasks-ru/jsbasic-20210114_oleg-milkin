@@ -26,21 +26,6 @@ export default class Carousel {
       `;
 
       slidesTemplate += template;
-
-      this.elem.addEventListener('click', (e) => {
-
-        if (e.target.closest('.carousel__button')) {
-
-          console.log(slides[index].id);
-
-          let myEvent = new CustomEvent("product-add", {
-            detail: slides[index].id,
-            bubbles: true
-          });
-
-          this.elem.dispatchEvent(myEvent);
-        }
-      });
     });
 
     this.elem.innerHTML = `
@@ -64,6 +49,17 @@ export default class Carousel {
       if (e.target.closest('.carousel__arrow_left')) {
         this.prev();
       }
+
+      if (e.target.closest('.carousel__button')) {
+
+        let myEvent = new CustomEvent("product-add", {
+          detail: slides[this.activeSlide].id,
+          bubbles: true
+        });
+
+        this.elem.dispatchEvent(myEvent);
+      }
+
     });
   }
 
