@@ -123,6 +123,7 @@ describe('6-module-3-task', () => {
 
     it('созданное событие должно содержать в себе уникальный идентификатор товара("id") c 2-ого слайда,' +
       ' если кликнули на 2 слайд', () => {
+      carouselArrowRight.dispatchEvent(clickEvent);
       let addButtons = sut.elem.querySelectorAll('.carousel__button');
       addButtons[1].dispatchEvent(clickEvent);
 
