@@ -30,20 +30,19 @@ export default class Modal {
 
     this.elem.querySelector('.modal__close').addEventListener('click', () => {
       this.close();
-    })
+    });
 
     document.addEventListener('keydown', (e) => {
       if (e.code === 'Escape') {
         this.close();
       }
-    })
+    });
   }
 
   open() {
-    let container = document.querySelector('.container');
-    container.append(this.elem);
-
     let bodyEl = document.querySelector('body');
+    bodyEl.append(this.elem);
+
     bodyEl.classList.add('is-modal-open');
   }
 
