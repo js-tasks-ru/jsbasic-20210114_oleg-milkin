@@ -55,7 +55,7 @@ export default class RibbonMenu {
 
       ribbonItems.forEach((item) => {
         item.classList.remove('ribbon__item_active');
-      })
+      });
 
       e.target.classList.add('ribbon__item_active');
 
@@ -65,23 +65,26 @@ export default class RibbonMenu {
       });
 
       this.elem.dispatchEvent(myEvent);
-    })
-
-    ribbonInner.addEventListener('scroll', (e) => {
-      let scrollLeft = e.target.scrollLeft;
-      let scrollWidth = e.target.scrollWidth;
-      let clientWidth = e.target.clientWidth;
-      let scrollRight = scrollWidth - scrollLeft - clientWidth;
-
-      if(scrollRight < 1) {
-        this.toggleArrowsVisibility(arrowLeft, arrowRight);
-      }
-
-      if(scrollLeft < 1) {
-        this.toggleArrowsVisibility(arrowLeft, arrowRight);
-      }
     });
 
+    ribbonInner.addEventListener('scroll', (e) => {
+      this.scrollHandler(e, arrowLeft, arrowRight);
+    });
+  }
+
+  scrollHandler(e, arrowLeft, arrowRight) {
+    let scrollLeft = e.target.scrollLeft;
+    let scrollWidth = e.target.scrollWidth;
+    let clientWidth = e.target.clientWidth;
+    let scrollRight = scrollWidth - scrollLeft - clientWidth;
+
+    if (scrollRight < 1) {
+      this.toggleArrowsVisibility(arrowLeft, arrowRight);
+    }
+
+    if (scrollLeft < 1) {
+      this.toggleArrowsVisibility(arrowLeft, arrowRight);
+    }
   }
 
   moveSlide(x, y, ribbonInner) {
