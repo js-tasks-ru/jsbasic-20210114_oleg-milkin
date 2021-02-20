@@ -40,5 +40,44 @@ export default class CartIcon {
 
   updatePosition() {
     // ваш код ...
+    let isCartVisible = this.elem.classList.contains('cart-icon_visible');
+    let isMobile = document.documentElement.clientWidth <= 767;
+    let iconTopMargin = this.elem.getBoundingClientRect().top;
+
+    if (isCartVisible) {
+
+      if(!isMobile) {
+        let pageScroll = window.pageYOffset;
+
+        let leftIndent = Math.min(
+          document.querySelector('.container').getBoundingClientRect().right + 20,
+          document.documentElement.clientWidth - this.elem.offsetWidth - 10
+        ) + 'px'
+
+        if (pageScroll >= iconTopMargin) {
+          Object.assign(this.elem.style, {
+            position: 'fixed',
+            top: '50px',
+            zIndex: 1e3,
+            right: '10px',
+            left: leftIndent
+          });
+        } else {
+          Object.assign(this.elem.style, {
+            position: '',
+            top: '',
+            left: '',
+            zIndex: ''
+          });
+        }
+      } else {
+        Object.assign(this.elem.style, {
+          position: '',
+          top: '',
+          left: '',
+          zIndex: ''
+        });
+      }
+    }
   }
 }
