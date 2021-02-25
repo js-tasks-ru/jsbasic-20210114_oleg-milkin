@@ -6,7 +6,6 @@ export default class Cart {
   }
 
   addProduct(product) {
-    // ваш код
     let res = this.cartItems.find((item) => item.product.id === product.id);
 
     if (res) {
@@ -25,7 +24,6 @@ export default class Cart {
     }
   }
   updateProductCount(productId, amount) {
-    // ваш код
     let res = this.cartItems.find((item) => item.product.id === productId);
 
     if(!res) {
@@ -46,12 +44,10 @@ export default class Cart {
   }
 
   isEmpty() {
-    // ваш код
     return this.cartItems.length ? false : true;
   }
 
   getTotalCount() {
-    // ваш код
     if(!this.isEmpty()) {
       return this.cartItems.reduce((sum, current) => {
         return sum + current.count;
@@ -60,7 +56,6 @@ export default class Cart {
   }
 
   getTotalPrice() {
-    // ваш код
     if(!this.isEmpty()) {
       return this.cartItems.reduce((sum, current) => {
         return sum + (current.count * current.product.price);
@@ -69,7 +64,6 @@ export default class Cart {
   }
 
   onProductUpdate(cartItem) {
-    // реализуем в следующей задаче
     this.cartIcon.update(this);
   }
 }
