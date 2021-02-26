@@ -8,8 +8,8 @@ export default class StepSlider {
 
     let stepsTemplate = '';
 
-    for(let i = 0; i < steps; i++) {
-      stepsTemplate += `<span></span>`
+    for (let i = 0; i < steps; i++) {
+      stepsTemplate += `<span></span>`;
     }
 
     let template = `
@@ -47,10 +47,9 @@ export default class StepSlider {
       let myEvent = new CustomEvent('slider-change', {
         detail: this.checkedSegment,
         bubbles: true
-      })
+      });
 
       this.elem.dispatchEvent(myEvent);
-
     }
 
     return false;
