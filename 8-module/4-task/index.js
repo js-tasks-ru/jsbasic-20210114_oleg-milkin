@@ -1,8 +1,6 @@
 import createElement from '../../assets/lib/create-element.js';
 import escapeHtml from '../../assets/lib/escape-html.js';
-
 import Modal from '../../7-module/2-task/index.js';
-
 export default class Cart {
   cartItems = [];
 
@@ -13,6 +11,7 @@ export default class Cart {
   }
 
   addProduct(product) {
+
     let res = this.cartItems.find((item) => item.product.id === product.id);
 
     if (res) {
@@ -38,11 +37,7 @@ export default class Cart {
       return;
     }
 
-    if (amount === 1) {
-      res.count++;
-    } else {
-      res.count--;
-    }
+    amount === 1 ? res.count++ : res.count--;
 
     if (res.count > 0) {
       this.onProductUpdate(res);
@@ -222,7 +217,7 @@ export default class Cart {
           <p>
             Order successful! Your order is being cooked :) <br>
             We’ll notify you about delivery time shortly.<br>
-            <img src="/assets/images/delivery.gif">
+            <img src="/assets/images/delivery.gif" alt="">
           </p>
         </div>
       `));
