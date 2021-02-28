@@ -1,7 +1,7 @@
 export default class StepSlider {
   constructor({ steps, value = 0 }) {
     this.steps = steps;
-    this.checkedSegment = 0;
+    this.checkedSegment = value;
 
     this.elem = document.createElement('div');
     this.elem.classList.add('slider');

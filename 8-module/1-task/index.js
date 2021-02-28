@@ -38,8 +38,10 @@ export default class CartIcon {
   }
 
   updatePosition() {
-    // ваш код ...
-    let isCartVisible = this.elem.classList.contains('cart-icon_visible');
+    let iconHeight = this.elem.offsetHeight;
+    let iconWidth = this.elem.offsetWidth;
+
+    let isCartVisible = iconHeight && iconWidth ? true : false;
 
     if (!isCartVisible) {
       return;
